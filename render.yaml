@@ -7,6 +7,6 @@ services:
     startCommand: "python main.py"
     envVars:
       - key: TELEGRAM_TOKEN
-        sync: false
+        sync: true
       - key: TELEGRAM_CHAT_ID
-        sync: false
+        sync: true
