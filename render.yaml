@@ -7,6 +7,6 @@ services:
     startCommand: "python main.py"
     envVars:
       - key: TELEGRAM_TOKEN
-        fromEnvVar: TELEGRAM_TOKEN
+        value: ${TELEGRAM_TOKEN}
       - key: TELEGRAM_CHAT_ID
-        fromEnvVar: TELEGRAM_CHAT_ID
+        value: ${TELEGRAM_CHAT_ID}
