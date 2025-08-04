@@ -8,6 +8,12 @@ app = Flask(__name__)
 TOKEN = os.getenv("TELEGRAM_TOKEN")
 CHAT_ID = os.getenv("TELEGRAM_CHAT_ID")
 
+# ✅ Пинг-ответ для Render + cron-job
+@app.route("/", methods=["GET"])
+def ping():
+    return "✅ Bot is alive and ready!"
+
+# 📩 Получение сигналов от TradingView
 @app.route("/", methods=["POST"])
 def webhook():
     data = request.json
@@ -35,10 +41,6 @@ def webhook():
 
     requests.post(f"https://api.telegram.org/bot{TOKEN}/sendMessage", data=payload)
     return {"status": "ok"}
-
-@app.route("/", methods=["GET"])
-def index():
-    return "Bot is running!"
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
